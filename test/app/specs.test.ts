@@ -12,7 +12,7 @@ describe('Specifications: tests', function () {
   });
 
   context(`ensures that`, function () {
-    it(`every command starts with 'vsicons.'`, function () {
+    it(`every command starts with the extension namespace`, function () {
       manifest.contributes.commands.forEach((command: IVSCodeCommand) => {
         expect(command.command.startsWith(constants.extension.name)).to.be.true;
       });
@@ -25,9 +25,9 @@ describe('Specifications: tests', function () {
       });
     });
 
-    it(`every command has a category of 'Icons'`, function () {
+    it(`every command uses the extension display name`, function () {
       manifest.contributes.commands.forEach((command: IVSCodeCommand) => {
-        expect(command.category).to.equal('Icons');
+        expect(command.category).to.equal(constants.extension.displayName);
       });
     });
 

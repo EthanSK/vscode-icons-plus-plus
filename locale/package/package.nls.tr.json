@@ -1,5 +1,5 @@
 {
-  "command.activateIcons.title": "VSCode Icons'u Etkinleştir",
+  "command.activateIcons.title": "VS Code Icons++'u Etkinleştir",
   "command.regenerateIcons.title": "Simge Değişikliklerini Uygula",
   "command.ngPreset.title": "Ön tanımlı Angular Ayarlarına Geç (Çalışma Alanı Düzeyi)",
   "command.nestPreset.title": "Ön tanımlı NestJS Ayarlarına Geç (Çalışma Alanı Düzeyi)",
@@ -12,7 +12,7 @@
   "command.hideExplorerArrowsPreset.title": "Explorer Klasör Oklarının Görünürlüğünü Değiştir (Kullanıcı Düzeyi)",
   "command.restoreIcons.title": "Varsayılan Simge Ayarlarını Geri Yükle",
   "command.resetProjectDetectionDefaults.title": "Proje Algılama Varsayılanlarını Sıfırla",
-  "configuration.title": "vscode-icons ayarları",
+  "configuration.title": "VS Code Icons++",
   "configuration.dontShowNewVersionMessage.description": "'true' olarak ayarlanırsa, yeni sürüm mesajı artık gösterilmez.",
   "configuration.dontShowConfigManuallyChangedMessage.description": "'true' olarak ayarlanırsa, konfigürasyonları manuel olarak değiştirirken, yeniden başlat mesajı gösterilmeyecek.",
   "configuration.projectDetection.autoReload.description": "'true' olarak ayarlanırsa, uzantı otomatik olarak proje algılamasıyla yeniden başlatılır.",

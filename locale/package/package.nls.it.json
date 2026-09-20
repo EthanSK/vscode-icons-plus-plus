@@ -1,5 +1,5 @@
 {
-  "command.activateIcons.title": "Attiva VSCode Icons",
+  "command.activateIcons.title": "Attiva VS Code Icons++",
   "command.regenerateIcons.title": "Applica Personalizzazione Icone",
   "command.ngPreset.title": "Attiva Preimpostazione Angular (a livello Area di Lavoro)",
   "command.nestPreset.title": "Attiva Preimpostazione NestJS (a livello Area di Lavoro)",
@@ -12,7 +12,7 @@
   "command.hideExplorerArrowsPreset.title": "Attiva/disattiva la visibilità delle frecce delle cartelle nell'Explorer (a livello Utente)",
   "command.restoreIcons.title": "Ripristina Manifesto Icone Predefinito",
   "command.resetProjectDetectionDefaults.title": "Ripristina Impostazioni Rilevazione Progetto Predefinite",
-  "configuration.title": "configurazione vscode-icons",
+  "configuration.title": "VS Code Icons++",
   "configuration.dontShowNewVersionMessage.description": "Se 'true', il messaggio di nuova versione non sarà più visualizato.",
   "configuration.dontShowConfigManuallyChangedMessage.description": "Se 'true', il messaggio di 'riavvio' non verrà mostrato quando si cambiano le configurazioni manualmente.",
   "configuration.projectDetection.autoReload.description": "Se 'true', l'estensione sara automaticamente riavviata a rilevazione progetto.",

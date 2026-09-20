@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   post_comment:
-    if: github.event.workflow_run.conclusion == 'success'
+    if: github.repository == 'vscode-icons/vscode-icons' && github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Download previews artifact

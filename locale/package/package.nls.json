@@ -1,5 +1,5 @@
 {
-  "command.activateIcons.title": "Activate VSCode Icons",
+  "command.activateIcons.title": "Activate VS Code Icons++",
   "command.regenerateIcons.title": "Apply Icons Customization",
   "command.ngPreset.title": "Toggle Angular Preset (Workspace Level)",
   "command.nestPreset.title": "Toggle NestJS Preset (Workspace Level)",
@@ -12,7 +12,7 @@
   "command.hideExplorerArrowsPreset.title": "Toggle Explorer Folder Arrows Visibility (User Level)",
   "command.restoreIcons.title": "Restore Default Icon Manifest",
   "command.resetProjectDetectionDefaults.title": "Reset Project Detection Defaults",
-  "configuration.title": "vscode-icons configuration",
+  "configuration.title": "VS Code Icons++",
   "configuration.dontShowNewVersionMessage.description": "If set to 'true', the new version message won't be shown anymore.",
   "configuration.dontShowConfigManuallyChangedMessage.description": "If set to 'true', when manually changing the configurations, the 'restart' message won't be shown.",
   "configuration.projectDetection.autoReload.description": "If set to 'true', the extension will restart automatically on project detection.",

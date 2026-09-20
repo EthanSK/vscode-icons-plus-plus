@@ -1,5 +1,5 @@
 {
-  "command.activateIcons.title": "Activer VSCode Icons",
+  "command.activateIcons.title": "Activer VS Code Icons++",
   "command.regenerateIcons.title": "Appliquer la personnalisation d'icônes",
   "command.ngPreset.title": "Activer/Désactiver Le Preset Angular. (Configuration de l'environement de travail)",
   "command.nestPreset.title": "Activer/Désactiver Le Preset NestJS. (Configuration de l'environement de travail)",
@@ -12,7 +12,7 @@
   "command.hideExplorerArrowsPreset.title": "Activer/Désactiver Les Flèches De Dossier Dans L'explorateur (Configuration de l'utilisateur seulement)",
   "command.restoreIcons.title": "Restaurer les icônes par défaut",
   "command.resetProjectDetectionDefaults.title": "Restaurer Les Paramètres Défini Par La Detection Automatique De Projet.",
-  "configuration.title": "Configuration de vscode-icons.",
+  "configuration.title": "VS Code Icons++",
   "configuration.dontShowNewVersionMessage.description": "Cacher les messages pour les prochaines versions.",
   "configuration.dontShowConfigManuallyChangedMessage.description": "N'affiche pas le message 'Recharger' après un changement manuelle des configurations.",
   "configuration.projectDetection.autoReload.description": "Recharger automatiquement l'extension après la détection automatique du type de projet.",

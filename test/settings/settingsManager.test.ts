@@ -322,7 +322,7 @@ describe('SettingsManager: tests', function () {
 
     context(`the 'isNewVersion' function is`, function () {
       it('truthy for a new extension version', function () {
-        stateMock.version = '1.0.0';
+        stateMock.version = '0.0.0';
         globalStateGetStub.returns(stateMock);
 
         expect(settingsManager.isNewVersion).to.be.true;

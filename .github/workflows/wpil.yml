@@ -12,6 +12,7 @@ on:
 jobs:
   update:
     name: Update Wiki Pages
+    if: github.repository == 'vscode-icons/vscode-icons'
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:

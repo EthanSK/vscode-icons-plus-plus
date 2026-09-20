@@ -1,5 +1,5 @@
 {
-  "command.activateIcons.title": "Ativar ícones VSCode",
+  "command.activateIcons.title": "Ativar VS Code Icons++",
   "command.regenerateIcons.title": "Aplicar a personalização de ícones",
   "command.ngPreset.title": "Alternar predefinições de Angular (nível de espaço de trabalho)",
   "command.nestPreset.title": "Alternar predefinições de NestJS (nível de espaço de trabalho)",
@@ -12,7 +12,7 @@
   "command.hideExplorerArrowsPreset.title": "Alternar visibilidade de setas de pastas do explorador (nível usuário)",
   "command.restoreIcons.title": "Restaurar padrão ícone do manifesto",
   "command.resetProjectDetectionDefaults.title": "Redefinir padrões de detecção de projeto",
-  "configuration.title": "configuração do vscode-icons",
+  "configuration.title": "VS Code Icons++",
   "configuration.dontShowNewVersionMessage.description": "Se definido como 'true', a mensagem de versão nova não vai ser mais mostrada.",
   "configuration.dontShowConfigManuallyChangedMessage.description": "Se definida como 'true', quando alterar manualmente as configurações, a mensagem de 'reiniciar' não será mostrada.",
   "configuration.projectDetection.autoReload.description": "Se definido como 'true', a extensão será reiniciada automaticamente na detecção do projeto.",

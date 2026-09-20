@@ -1,5 +1,5 @@
 {
-  "command.activateIcons.title": "Активировать VSCode Icons",
+  "command.activateIcons.title": "Активировать VS Code Icons++",
   "command.regenerateIcons.title": "Применить пользовательские настройки значков",
   "command.ngPreset.title": "Переключить значки файлов Angular (для рабочей области)",
   "command.nestPreset.title": "Переключить значки файлов NestJS (для рабочей области)",
@@ -12,7 +12,7 @@
   "command.hideExplorerArrowsPreset.title": "Переключить отображение стрелки возле значка папки (для пользователя)",
   "command.restoreIcons.title": "Восстановить манифест значков по-умолчанию",
   "command.resetProjectDetectionDefaults.title": "Восстановить настройки определения проекта по-умолчанию",
-  "configuration.title": "Настройки vscode-icons",
+  "configuration.title": "VS Code Icons++",
   "configuration.dontShowNewVersionMessage.description": "Если установлено значение 'true', сообщения о новой версии больше не будут отображаться.",
   "configuration.dontShowConfigManuallyChangedMessage.description": "Если установлено значение 'true', сообщение с просьбой перезапуска больше не будет отображаться при ручном изменении настроек.",
   "configuration.projectDetection.autoReload.description": "Если установлено значение 'true', расширение автоматически перезапустится при определении типа проекта.",

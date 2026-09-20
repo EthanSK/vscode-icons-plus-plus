@@ -23,6 +23,16 @@ describe('Entry points: tests', function () {
       extensionStub =
         sinon.createStubInstance<IExtensionManager>(ExtensionManager);
       EntryPoint = proxyq('../src/index', {
+        vscode: { workspace: {} },
+        './nx/nxProjectIconsController': {
+          NxProjectIconsController: sinon.stub().returns({
+            scan: sinon
+              .stub()
+              .resolves({ active: false, projects: [], files: [] }),
+            watch: sinon.stub(),
+            dispose: sinon.stub(),
+          }),
+        },
         './services/compositionRootService': {
           CompositionRootService: sinon
             .stub()
@@ -50,8 +60,8 @@ describe('Entry points: tests', function () {
         infoStub = sandbox.stub(console, 'info');
       });
 
-      it('activates the extension', function () {
-        EntryPoint.activate(extensionContext);
+      it('activates the extension', async function () {
+        await EntryPoint.activate(extensionContext);
 
         expect(extensionStub.activate.calledOnceWithExactly()).to.be.true;
       });
