@@ -1,5 +1,5 @@
 {
-  "command.activateIcons.title": "激活 VSCode Icons",
+  "command.activateIcons.title": "激活 VS Code Icons++",
   "command.regenerateIcons.title": "开始使用自定义图标",
   "command.ngPreset.title": "切换成 Angular 模式（工作区级别）",
   "command.nestPreset.title": "切换成 NestJS 模式（工作区级别）",
@@ -12,7 +12,7 @@
   "command.hideExplorerArrowsPreset.title": "切换资源管理器的文件夹箭头的可见性（用户级别）",
   "command.restoreIcons.title": "恢复成默认图标模式",
   "command.resetProjectDetectionDefaults.title": "重置工程文件侦测模式为默认设置",
-  "configuration.title": "vscode-icons 设置",
+  "configuration.title": "VS Code Icons++",
   "configuration.dontShowNewVersionMessage.description": "如果设置成'true'，关于新的版本消息将不再显示",
   "configuration.dontShowConfigManuallyChangedMessage.description": "如果设置成'true'，手动修改配置后不提醒「重启后生效」",
   "configuration.projectDetection.autoReload.description": "如果设置成'true'，检测工程文件后自动重启插件",

@@ -16,10 +16,10 @@ Scope and remaining boundaries:
 
 - Detection uses saved files in the current VS Code workspace, including multi-root workspaces. It does not parse unsaved editors or import aliases/re-export dependency graphs.
 - Projects discovered only through executable Nx plugins, without supported project metadata, are not inferred by running Nx.
-- `node_modules`, `.git`, `.nx`, `dist`, `build`, `coverage` and `out` are excluded. Workspaces exceeding 20,000 source/config files use upstream detection instead, with a console message. Excluded and unopened files cannot participate in collision detection.
+- `node_modules`, `.git`, `.nx`, `dist`, `build`, `coverage` and `out` are excluded. Workspaces exceeding 100,000 source/config files use upstream detection instead, with a console message. Excluded and unopened files cannot participate in collision detection.
 - The browser version retains upstream's static icon theme. Nx detection runs in the desktop extension host and reads source files through the VS Code filesystem API.
 - Upstream writes one shared theme file per extension installation. Independently opened VS Code windows can still overwrite that shared theme. This change supports mixed projects in one workspace; it does not provide isolated themes per window.
-- The fork retains upstream's extension identity for this feature PR. Test it in an isolated profile; this branch is not a separately published replacement for the installed Marketplace extension.
+- The fork is independently published as `EthanSK.vscode-icons-plus-plus` with the **VS Code Icons++** theme. It retains `vsicons.*` configuration compatibility and uses its own command namespace. Install the fork before removing the original extension so existing settings are preserved.
 
 ## Verification
 
@@ -30,7 +30,7 @@ npm run lint
 npm run dist
 ```
 
-The production build rewrites the entrypoint, uninstall script and icon-theme path in `package.json`. Restore those three generated paths to their checked-in values before running upstream's unit tests again; they test the development manifest.
+The production build rewrites the entrypoint and icon-theme path in `package.json`. Restore those two generated paths to their checked-in values before running upstream's unit tests again; they test the development manifest.
 
 The native regression uses a disposable workspace/profile, the real production bundle, VS Code's actual Explorer CSS, and dark/light screenshots. On macOS it refuses to launch on anything except a Mac mini. It never touches the normal VS Code profile. Use Node 22 or newer for this test runner.
 

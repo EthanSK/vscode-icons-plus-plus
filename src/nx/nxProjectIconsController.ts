@@ -1,10 +1,15 @@
 import type { IDisposable, Workspace } from './workspaceTypes';
-import { analyzeNx, INxAnalysis, INxFile } from './nxProjectIcons';
+import {
+  analyzeNx,
+  INxAnalysis,
+  INxFile,
+  summarizeNxFile,
+} from './nxProjectIcons';
 
 const include =
   '**/{nx.json,project.json,package.json,workspace.json,angular.json,*.[tT][sS],*.[tT][sS][xX],*.[jJ][sS],*.[jJ][sS][xX],*.[mMcC][tT][sS],*.[mMcC][jJ][sS]}';
 const exclude = '**/{node_modules,.git,.nx,dist,build,coverage,out}/**';
-const maxFiles = 20000;
+const maxFiles = 100000;
 
 /** One serialized scan per burst; stale scans never overwrite newer results. */
 export class NxProjectIconsController implements IDisposable {
@@ -24,18 +29,21 @@ export class NxProjectIconsController implements IDisposable {
         .getConfiguration('vsicons')
         .get<boolean>('projectDetection.disableDetect', false)
     ) {
+      this.cache.clear();
       return empty;
     }
     const roots = await this.workspace.findFiles('**/nx.json', exclude, 1);
     if (!roots.length) {
+      this.cache.clear();
       return empty;
     }
     // Do not silently resolve a collision from a truncated workspace sample.
     const uris = await this.workspace.findFiles(include, exclude, maxFiles + 1);
     if (uris.length > maxFiles) {
       console.info(
-        '[vscode-icons] Nx detection skipped: workspace exceeds 20000 source/config files.',
+        '[vscode-icons] Nx detection skipped: workspace exceeds 100000 source/config files.',
       );
+      this.cache.clear();
       return empty;
     }
     const files: INxFile[] = [];
@@ -54,10 +62,10 @@ export class NxProjectIconsController implements IDisposable {
           } catch {
             // Retain unreadable names for conservative collision handling.
           }
-          const file = {
-            path: `/${uri.scheme}/${encodeURIComponent(uri.authority) || '_'}${uri.path}`,
+          const file = summarizeNxFile(
+            `/${uri.scheme}/${encodeURIComponent(uri.authority) || '_'}${uri.path}`,
             content,
-          };
+          );
           this.cache.set(key, file);
           return file;
         }),

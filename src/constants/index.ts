@@ -4,9 +4,10 @@ import { IPackageManifest } from '../models/packageManifest';
 export const constants = {
   environment: { production: false },
   extension: {
-    name: 'vscode-icons',
+    name: 'vscode-icons-plus-plus',
+    displayName: 'VS Code Icons++',
     zedName: 'vscode-icons-zed',
-    settingsFilename: 'vsicons.settings.json',
+    settingsFilename: 'vsicons-plus-plus.settings.json',
     version: (manifest as IPackageManifest).version,
     customIconFolderName: 'vsicons-custom-icons',
     distEntryFilename: 'vscode-icons.bundle.js',
@@ -44,9 +45,9 @@ export const constants = {
     projectDetectionDisableDetectSetting:
       'vsicons.projectDetection.disableDetect',
   },
-  urlReleaseNote: 'https://github.com/vscode-icons/vscode-icons/releases',
+  urlReleaseNote: 'https://github.com/EthanSK/vscode-icons-plus-plus/releases',
   urlReadme:
-    'https://github.com/vscode-icons/vscode-icons/blob/master/README.md',
+    'https://github.com/EthanSK/vscode-icons-plus-plus/blob/master/README.md',
   urlOfficialApi:
     'https://code.visualstudio.com/docs/getstarted/themes#_selecting-the-file-icon-theme',
   iconsManifest: {

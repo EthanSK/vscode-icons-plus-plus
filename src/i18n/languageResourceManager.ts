@@ -53,7 +53,9 @@ export class LanguageResourceManager
         });
       });
 
-    return msg.replace(/%extensionName%/gi, constants.extension.name).trim();
+    return msg
+      .replace(/%extensionName%/gi, constants.extension.displayName)
+      .trim();
   }
 
   public getLangResourceKey(

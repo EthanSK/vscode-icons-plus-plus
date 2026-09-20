@@ -4,6 +4,7 @@ export type Framework = 'angular' | 'nestjs';
 export interface INxFile {
   path: string;
   content: string;
+  frameworks?: Framework[];
 }
 export interface INxProject {
   root: string;
@@ -34,6 +35,9 @@ const single = (values: Set<Framework>): Framework | undefined =>
 // Tokenize strings/comments before looking for module specifiers. Comments,
 // template literals and prose strings must not classify a project.
 export function importFrameworks(content: string): Set<Framework> {
+  if (!/@(?:angular|nestjs)\//.test(content)) {
+    return new Set<Framework>();
+  }
   const tokens =
     content.match(
       /\/\*[\s\S]*?\*\/|\/\/[^\r\n]*|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`|[\w$]+|[^\s]/g,
@@ -56,6 +60,13 @@ export function importFrameworks(content: string): Set<Framework> {
     }
   }
   return result;
+}
+
+/** Keep only framework evidence for source files, rather than entire documents. */
+export function summarizeNxFile(path: string, content: string): INxFile {
+  return /\.[cm]?[jt]sx?$/i.test(path)
+    ? { path, content: '', frameworks: [...importFrameworks(content)] }
+    : { path, content };
 }
 
 function configFrameworks(config: Record<string, unknown>): Set<Framework> {
@@ -144,12 +155,26 @@ export function analyzeNx(files: INxFile[]): INxAnalysis {
   }
   const roots = [...projects.keys()].sort((a, b) => b.length - a.length);
   const sources = files.filter(f => /\.[cm]?[jt]sx?$/i.test(f.path));
-  const owner = (path: string): string | undefined =>
-    roots.find(root => inside(path, root));
+  const owners = new Map<string, string | undefined>();
+  const owner = (path: string): string | undefined => {
+    const directory = posix.dirname(path);
+    if (owners.has(directory)) {
+      return owners.get(directory);
+    }
+    const root = projects.has(directory)
+      ? directory
+      : directory === posix.dirname(directory)
+        ? undefined
+        : owner(directory);
+    owners.set(directory, root);
+    return root;
+  };
   for (const file of sources) {
     const root = owner(file.path);
     if (root) {
-      importFrameworks(file.content).forEach(f => projects.get(root).add(f));
+      (file.frameworks || [...importFrameworks(file.content)]).forEach(f =>
+        projects.get(root).add(f),
+      );
     }
   }
   return {

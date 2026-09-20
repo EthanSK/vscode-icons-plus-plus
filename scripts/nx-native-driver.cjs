@@ -7,9 +7,19 @@ const root = require('node:process').env.NX_ICONS_TEST_ROOT;
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 exports.run = async () => {
   const extension = vscode.extensions.getExtension(
-    'vscode-icons-team.vscode-icons',
+    'EthanSK.vscode-icons-plus-plus',
   );
-  assert.ok(extension, 'development extension loaded');
+  assert.ok(extension, 'packaged extension loaded');
+  assert.equal(extension.packageJSON.displayName, 'VS Code Icons++');
+  assert.equal(extension.packageJSON.publisher, 'EthanSK');
+  assert.equal(
+    extension.packageJSON.contributes.iconThemes[0].label,
+    'VS Code Icons++',
+  );
+  assert.ok(
+    !extension.packageJSON.scripts['vscode:uninstall'],
+    'uninstall preserves shared settings',
+  );
   await extension.activate();
   const manifestPath = path.join(
     extension.extensionPath,
@@ -64,11 +74,15 @@ exports.run = async () => {
             request.files,
             vscode.ConfigurationTarget.Workspace,
           );
-        await vscode.commands.executeCommand('vscode-icons.regenerateIcons');
+        await vscode.commands.executeCommand(
+          'vscode-icons-plus-plus.regenerateIcons',
+        );
       } else if (request.action === 'explorer') {
         await vscode.commands.executeCommand('workbench.view.explorer');
       } else if (request.action === 'regenerate') {
-        await vscode.commands.executeCommand('vscode-icons.regenerateIcons');
+        await vscode.commands.executeCommand(
+          'vscode-icons-plus-plus.regenerateIcons',
+        );
       } else if (request.action === 'stop') {
         return;
       }

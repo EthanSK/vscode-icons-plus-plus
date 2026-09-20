@@ -1,5 +1,5 @@
 {
-  "command.activateIcons.title": "VSCode Iconsを有効化",
+  "command.activateIcons.title": "VS Code Icons++を有効化",
   "command.regenerateIcons.title": "カスタマイズしたアイコンの適用",
   "command.ngPreset.title": "Angularプリセットの切り替え (ワークスペース設定)",
   "command.nestPreset.title": "NestJSプリセットの切り替え (ワークスペース設定)",
@@ -12,7 +12,7 @@
   "command.hideExplorerArrowsPreset.title": "エクスプローラーのフォルダ矢印表示の切り替え (ユーザー設定)",
   "command.restoreIcons.title": "アイコン設定の復元",
   "command.resetProjectDetectionDefaults.title": "プロジェクト検出設定をリセット",
-  "configuration.title": "vscode-icons",
+  "configuration.title": "VS Code Icons++",
   "configuration.dontShowNewVersionMessage.description": "'true'に設定すると、新バージョンの通知を表示しません。",
   "configuration.dontShowConfigManuallyChangedMessage.description": "'true'に設定すると、設定を変更したときに「再読み込み」のメッセージを表示しません。",
   "configuration.projectDetection.autoReload.description": "'true'に設定すると、プロジェクト検出時に拡張機能を自動で再読み込みします。",

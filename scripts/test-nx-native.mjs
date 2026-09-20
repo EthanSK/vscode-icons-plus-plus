@@ -22,7 +22,8 @@ if (process.platform === 'darwin') {
     'Run native tests on the Mini',
   );
 }
-const extensionRoot = fileURLToPath(new URL('../', import.meta.url));
+const scriptRoot = fileURLToPath(new URL('../', import.meta.url));
+const extensionRoot = process.env.NX_ICONS_EXTENSION_PATH || scriptRoot;
 const executable = process.env.NX_ICONS_VSCODE_EXECUTABLE;
 assert.ok(
   executable && fs.existsSync(executable),
@@ -75,7 +76,7 @@ write('libs/nest/src/app.module.ts', 'export class AppModule {}\n');
 write(
   '.vscode/settings.json',
   JSON.stringify({
-    'workbench.iconTheme': 'vscode-icons',
+    'workbench.iconTheme': 'vscode-icons-plus-plus',
     'workbench.startupEditor': 'none',
     'vsicons.dontShowNewVersionMessage': true,
     'vsicons.dontShowConfigManuallyChangedMessage': true,
@@ -99,7 +100,7 @@ const child = spawn(
     `--user-data-dir=${path.join(root, 'profile')}`,
     `--extensions-dir=${path.join(root, 'extensions')}`,
     `--extensionDevelopmentPath=${extensionRoot}`,
-    `--extensionTestsPath=${path.join(extensionRoot, 'scripts/nx-native-driver.cjs')}`,
+    `--extensionTestsPath=${path.join(scriptRoot, 'scripts/nx-native-driver.cjs')}`,
     `--remote-debugging-port=${port}`,
     '--disable-workspace-trust',
     '--skip-welcome',

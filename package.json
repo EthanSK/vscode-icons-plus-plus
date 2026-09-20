@@ -1,38 +1,20 @@
 {
-  "name": "vscode-icons",
-  "displayName": "vscode-icons",
-  "description": "Icons for Visual Studio Code",
-  "version": "12.19.0",
-  "publisher": "vscode-icons-team",
+  "name": "vscode-icons-plus-plus",
+  "displayName": "VS Code Icons++",
+  "description": "All vscode-icons file and folder icons, with Angular and Nest icons detected per project in Nx workspaces.",
+  "version": "1.0.0",
+  "publisher": "EthanSK",
   "license": "MIT",
   "author": {
-    "email": "roberto.huertas@outlook.com",
-    "name": "Roberto Huertas",
-    "url": "https://robertohuertas.com"
+    "name": "Ethan SK",
+    "url": "https://github.com/EthanSK"
   },
-  "maintainers": [
-    {
-      "email": "remcohaszing@gmail.com",
-      "name": "Remco Haszing",
-      "url": "https://remcohaszing.nl"
-    },
-    {
-      "email": "jimikar@gmail.com",
-      "name": "Jimi (Dimitris) Charalampidis"
-    },
-    {
-      "email": "stevenbojato04@gmail.com",
-      "name": "Manuel Bojato",
-      "url": "https://kingdarboja.github.io/"
-    }
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/vscode-icons/vscode-icons"
+    "url": "https://github.com/EthanSK/vscode-icons-plus-plus"
   },
   "bugs": {
-    "url": "https://github.com/vscode-icons/vscode-icons/issues",
-    "email": "roberto.huertas@outlook.com"
+    "url": "https://github.com/EthanSK/vscode-icons-plus-plus/issues"
   },
   "engines": {
     "vscode": "^1.82.0",
@@ -43,15 +25,16 @@
     "theme",
     "icon-theme",
     "multi-root ready",
-    "portable mode ready"
+    "portable mode ready",
+    "nx",
+    "angular",
+    "nestjs",
+    "monorepo"
   ],
-  "homepage": "https://vscodeicons.team",
-  "sponsor": {
-    "url": "https://github.com/sponsors/vscode-icons"
-  },
+  "homepage": "https://github.com/EthanSK/vscode-icons-plus-plus#readme",
   "main": "out/src/",
   "browser": "dist/src/vscode-icons.web.bundle.js",
-  "icon": "images/logo.png",
+  "icon": "images/icons-plus-plus.png",
   "scripts": {
     "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
     "format": "prettier --loglevel error --write .",
@@ -69,7 +52,6 @@
     "test:nx:native": "node scripts/test-nx-native.mjs",
     "test:vs": "node ./node_modules/vscode/bin/test",
     "vscode:prepublish": "npm run dist",
-    "vscode:uninstall": "node ./out/src/uninstall.js",
     "precompile": "rimraf ./out ./dist",
     "compile": "tsc -p tsconfig.prod.json",
     "postcompile": "npm run bundle",
@@ -80,7 +62,9 @@
     "lint": "eslint",
     "predist": "npm run build",
     "dist": "webpack --mode production",
-    "serve": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
+    "serve": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. .",
+    "package:vsix": "vsce package --no-dependencies",
+    "verify:marketplace": "node scripts/verify-marketplace-release.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.0",
@@ -95,10 +79,11 @@
     "@types/vscode": "1.82.0",
     "@types/webpack": "^4.41.22",
     "@vscode/test-web": "^0.0.71",
+    "@vscode/vsce": "^3.9.2",
     "chai": "^4.3.7",
     "eslint": "^10.0.0",
-    "eslint-plugin-import-x": "^4.0.0",
     "eslint-import-resolver-typescript": "^4.0.0",
+    "eslint-plugin-import-x": "^4.0.0",
     "glob": "^10.5.0",
     "husky": "^8.0.3",
     "mocha": "^10.2.0",
@@ -149,101 +134,101 @@
   "contributes": {
     "iconThemes": [
       {
-        "id": "vscode-icons",
-        "label": "VSCode Icons",
+        "id": "vscode-icons-plus-plus",
+        "label": "VS Code Icons++",
         "path": "out/src/vsicons-icon-theme.json",
         "_watch": true
       }
     ],
     "commands": [
       {
-        "command": "vscode-icons.activateIcons",
+        "command": "vscode-icons-plus-plus.activateIcons",
         "title": "%command.activateIcons.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "activationCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.regenerateIcons",
+        "command": "vscode-icons-plus-plus.regenerateIcons",
         "title": "%command.regenerateIcons.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "applyCustomizationCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.ngPreset",
+        "command": "vscode-icons-plus-plus.ngPreset",
         "title": "%command.ngPreset.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "toggleAngularPresetCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.nestPreset",
+        "command": "vscode-icons-plus-plus.nestPreset",
         "title": "%command.nestPreset.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "toggleNestPresetCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.jsPreset",
+        "command": "vscode-icons-plus-plus.jsPreset",
         "title": "%command.jsPreset.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "toggleJsPresetCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.tsPreset",
+        "command": "vscode-icons-plus-plus.tsPreset",
         "title": "%command.tsPreset.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "toggleTsPresetCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.jsonPreset",
+        "command": "vscode-icons-plus-plus.jsonPreset",
         "title": "%command.jsonPreset.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "toggleJsonPresetCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.yamlPreset",
+        "command": "vscode-icons-plus-plus.yamlPreset",
         "title": "%command.yamlPreset.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "toggleYamlPresetCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.hideFoldersPreset",
+        "command": "vscode-icons-plus-plus.hideFoldersPreset",
         "title": "%command.hideFoldersPreset.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "toggleHideFoldersPresetCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.foldersAllDefaultIconPreset",
+        "command": "vscode-icons-plus-plus.foldersAllDefaultIconPreset",
         "title": "%command.foldersAllDefaultIconPreset.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "toggleFoldersAllDefaultIconPresetCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.hideExplorerArrowsPreset",
+        "command": "vscode-icons-plus-plus.hideExplorerArrowsPreset",
         "title": "%command.hideExplorerArrowsPreset.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "toggleHideExplorerArrowsPresetCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.restoreIcons",
+        "command": "vscode-icons-plus-plus.restoreIcons",
         "title": "%command.restoreIcons.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "restoreDefaultManifestCommand",
         "enablement": "!isWeb"
       },
       {
-        "command": "vscode-icons.resetProjectDetectionDefaults",
+        "command": "vscode-icons-plus-plus.resetProjectDetectionDefaults",
         "title": "%command.resetProjectDetectionDefaults.title%",
-        "category": "Icons",
+        "category": "VS Code Icons++",
         "callbackName": "resetProjectDetectionDefaultsCommand",
         "enablement": "!isWeb"
       }
@@ -363,5 +348,25 @@
         }
       }
     }
-  }
+  },
+  "contributors": [
+    {
+      "email": "remcohaszing@gmail.com",
+      "name": "Remco Haszing",
+      "url": "https://remcohaszing.nl"
+    },
+    {
+      "email": "jimikar@gmail.com",
+      "name": "Jimi (Dimitris) Charalampidis"
+    },
+    {
+      "email": "stevenbojato04@gmail.com",
+      "name": "Manuel Bojato",
+      "url": "https://kingdarboja.github.io/"
+    },
+    {
+      "name": "Roberto Huertas",
+      "url": "https://robertohuertas.com"
+    }
+  ]
 }

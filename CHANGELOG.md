@@ -1,3 +1,13 @@
+# VS Code Icons++
+
+## 1.0.0
+
+- Detect Angular and Nest icons per project in Nx workspaces.
+- Refresh icons on file moves and project changes, with neutral icons for ambiguous matches.
+- Publish independently as `EthanSK.vscode-icons-plus-plus`, preserving `vsicons.*` customization settings.
+
+## Upstream history
+
 # Change Log
 
 We dropped support of this changelog file on December, 2021. If you want to see the changelog [go to the release GitHub page](https://github.com/vscode-icons/vscode-icons/releases).

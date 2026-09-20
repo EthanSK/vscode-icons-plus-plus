@@ -4,6 +4,7 @@ import {
   importFrameworks,
   INxFile,
   scopedIcons,
+  summarizeNxFile,
 } from '../../src/nx/nxProjectIcons';
 
 const file = (path: string, content = ''): INxFile => ({ path, content });
@@ -152,5 +153,21 @@ describe('Nx project icons', () => {
     expect(
       analyzeNx(fixture().filter(f => !f.path.endsWith('nx.json'))).active,
     ).to.equal(false);
+  });
+  it('keeps the same classifications with compact cached source evidence', () => {
+    const files = [
+      ...fixture(),
+      file('/repo/libs/web/unknown/nested/more.service.ts'),
+      file('/repo/libs/web/nested/project.json', '{}'),
+      file('/repo/libs/web/nested/src/neutral.service.ts'),
+    ];
+    const compact = files.map(f => summarizeNxFile(f.path, f.content));
+    expect(analyzeNx(compact)).to.deep.equal(analyzeNx(files));
+    expect(compact.find(f => f.path.endsWith('a.service.ts')).content).to.equal(
+      '',
+    );
+    expect(
+      compact.find(f => f.path.endsWith('a.service.ts')).frameworks,
+    ).to.deep.equal(['angular']);
   });
 });
