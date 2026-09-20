@@ -10,6 +10,7 @@ import { IVSCodeCommand } from '../models/vscode/vscodeCommand';
 import { Utils } from '../utils';
 
 export class ExtensionManager implements models.IExtensionManager {
+  public nxProjectIconsEnabled = false;
   //#region Properties
   private readonly manifest: IPackageManifest;
   private doReload: boolean;
@@ -69,11 +70,16 @@ export class ExtensionManager implements models.IExtensionManager {
     await this.manageIntroMessage();
     await this.manageCustomizations();
 
-    const detectionResults: models.IProjectDetectionResult[] =
-      await this.projectAutoDetectionManager.detectProjects([
-        models.Projects.angular,
-        models.Projects.nestjs,
-      ]);
+    if (this.nxProjectIconsEnabled) {
+      await this.applyCustomization();
+    }
+    const detectionResults: models.IProjectDetectionResult[] = this
+      .nxProjectIconsEnabled
+      ? []
+      : await this.projectAutoDetectionManager.detectProjects([
+          models.Projects.angular,
+          models.Projects.nestjs,
+        ]);
     await this.applyProjectDetection(detectionResults);
 
     // Update the version in settings
@@ -82,6 +88,10 @@ export class ExtensionManager implements models.IExtensionManager {
     }
   }
   //#endregion
+
+  public refreshNxProjectIcons(): Promise<void> {
+    return this.applyCustomization();
+  }
 
   //#region Private functions
   private registerCommands(commands: IVSCodeCommand[]): void {

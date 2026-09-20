@@ -1,3 +1,9 @@
+## Nx project icons (development fork)
+
+This fork adds automatic Angular and Nest icons per Nx project. Both frameworks can appear in the same workspace without choosing one global preset. Shared or ambiguous files keep a neutral language icon.
+
+See [Nx detection, limitations and testing](docs/nx-project-icons.md). This feature branch is not a Marketplace release; the original installation instructions below install upstream vscode-icons.
+
 <div align="center">
 
 

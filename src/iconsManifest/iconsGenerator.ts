@@ -6,12 +6,15 @@ import { constants } from '../constants';
 import * as models from '../models';
 import { IPackageManifest } from '../models/packageManifest';
 import { Utils } from '../utils';
+import { INxAnalysis } from '../nx/nxProjectIcons';
+import { applyNxIcons } from '../nx/applyNxIcons';
 import { CustomsMerger } from './customsMerger';
 import { ManifestBuilder } from './manifestBuilder';
 import { extensions as extFiles } from './supportedExtensions';
 import { extensions as extFolders } from './supportedFolders';
 
 export class IconsGenerator implements models.IIconsGenerator {
+  public nxAnalysis?: INxAnalysis;
   private readonly manifest: IPackageManifest;
   private affectedPresets: models.IPresets;
 
@@ -51,8 +54,15 @@ export class IconsGenerator implements models.IIconsGenerator {
       extFiles,
       folders,
       extFolders,
-      vsiconsConfig.presets,
-      projectDetectionResults,
+      this.nxAnalysis?.active
+        ? { ...vsiconsConfig.presets, angular: false, nestjs: false }
+        : vsiconsConfig.presets,
+      this.nxAnalysis?.active
+        ? [
+            { project: models.Projects.angular, value: false, apply: true },
+            { project: models.Projects.nestjs, value: false, apply: true },
+          ]
+        : projectDetectionResults,
       this.affectedPresets,
     );
     const customIconsDirPath = await this.configManager.getCustomIconsDirPath(
@@ -68,6 +78,36 @@ export class IconsGenerator implements models.IIconsGenerator {
     manifest.vscode.hidesExplorerArrows =
       vsiconsConfig.presets.hideExplorerArrows;
 
+    if (this.nxAnalysis?.active) {
+      const frameworkManifest = async (
+        framework: 'ng_' | 'nest_',
+      ): Promise<models.IIconSchema> => {
+        const supported = extFiles.supported.map(file => ({
+          ...file,
+          disabled:
+            file.icon.startsWith(framework) && !file.icon.endsWith('2')
+              ? false
+              : file.disabled,
+        }));
+        return (
+          await ManifestBuilder.buildManifest(
+            { ...extFiles, supported },
+            extFolders,
+            customIconsDirPath,
+          )
+        ).vscode;
+      };
+      // ManifestBuilder holds path state; keep builds sequential.
+      const angular = await frameworkManifest('ng_');
+      const nestjs = await frameworkManifest('nest_');
+      applyNxIcons(
+        manifest.vscode,
+        this.nxAnalysis,
+        angular,
+        nestjs,
+        files?.supported,
+      );
+    }
     return manifest;
   }
 
