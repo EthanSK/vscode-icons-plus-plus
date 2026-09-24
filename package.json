@@ -2,7 +2,7 @@
   "name": "vscode-icons-plus-plus",
   "displayName": "VS Code Icons++",
   "description": "All vscode-icons file and folder icons, with Angular and Nest icons detected per project in Nx workspaces.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "EthanSK",
   "license": "MIT",
   "author": {
