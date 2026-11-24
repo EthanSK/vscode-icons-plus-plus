@@ -13,7 +13,7 @@ concurrency:
 jobs:
   publish:
     if: github.repository == 'EthanSK/vscode-icons-plus-plus' && github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # The locked Playwright browser installer does not support Ubuntu 26.
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
